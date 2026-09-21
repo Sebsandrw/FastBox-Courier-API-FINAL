@@ -5,6 +5,12 @@ Proyecto web desarrollado para gestionar y consultar información relacionada co
 El proyecto está dividido en una parte principal del sistema y una página destinada al consumidor, donde se puede consultar la información proporcionada por la API.
 
 ## Páginas del proyecto
+# Creedenciales:
+operador
+Fastbox2026@
+
+Admin
+Fastbox2026@
 
 ### FastBox Courier
 
