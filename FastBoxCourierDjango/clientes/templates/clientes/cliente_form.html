@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ titulo_pagina }} | FastBox Courier
+{% endblock %}
+
+{% block content %}
+
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <div class="card">
+        <div class="card-body p-4">
+
+          <h1 class="h3 mb-4">
+            {{ titulo_pagina }}
+          </h1>
+
+          <form method="post" novalidate>
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+              <div class="alert alert-danger">
+                {% for error in form.non_field_errors %}
+                  <div>{{ error }}</div>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <div class="row">
+              {% for field in form %}
+                <div
+                  class="
+                  {% if field.name == 'direccion' %}
+                    col-12
+                  {% else %}
+                    col-md-6
+                  {% endif %}
+                  mb-3"
+                >
+
+                  {% if field.name == "estado" %}
+                    <div class="form-check mt-4">
+                      {{ field }}
+
+                      <label
+                        for="{{ field.id_for_label }}"
+                        class="form-check-label"
+                      >
+                        {{ field.label }}
+                      </label>
+                    </div>
+                  {% else %}
+                    <label
+                      for="{{ field.id_for_label }}"
+                      class="form-label
+                      {% if field.field.required %}
+                        campo-obligatorio
+                      {% endif %}"
+                    >
+                      {{ field.label }}
+                    </label>
+
+                    {{ field }}
+                  {% endif %}
+
+                  {% for error in field.errors %}
+                    <div class="text-danger small mt-1">
+                      {{ error }}
+                    </div>
+                  {% endfor %}
+
+                </div>
+              {% endfor %}
+            </div>
+
+            <div class="d-flex gap-2">
+              <button
+                type="submit"
+                class="btn btn-fastbox"
+              >
+                {{ texto_boton }}
+              </button>
+
+              <a
+                href="{% url 'clientes:cliente_lista' %}"
+                class="btn btn-secondary"
+              >
+                Cancelar
+              </a>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

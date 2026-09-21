@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Eliminar cliente | FastBox Courier
+{% endblock %}
+
+{% block content %}
+
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+
+      <div class="card border-danger">
+        <div class="card-body p-4">
+
+          <h1 class="h3 text-danger">
+            Eliminar cliente
+          </h1>
+
+          <p>
+            Está a punto de eliminar al cliente:
+          </p>
+
+          <p class="fw-bold fs-5">
+            {{ cliente.nombres }} {{ cliente.apellidos }}
+          </p>
+
+          <div class="alert alert-warning">
+            Si el cliente tiene paquetes registrados,
+            no podrá eliminarse.
+          </div>
+
+          <form method="post">
+            {% csrf_token %}
+
+            <button
+              type="submit"
+              class="btn btn-danger"
+            >
+              Confirmar eliminación
+            </button>
+
+            <a
+              href="{% url 'clientes:cliente_lista' %}"
+              class="btn btn-secondary"
+            >
+              Cancelar
+            </a>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

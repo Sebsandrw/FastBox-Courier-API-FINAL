@@ -1,0 +1,312 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Inicio | FastBox Courier
+{% endblock %}
+
+{% block content %}
+
+  <div class="row align-items-center mb-4">
+    <div class="col-lg-8">
+      <h1 class="h2 mb-2">
+        Panel principal de FastBox Courier
+      </h1>
+
+      <p class="text-muted mb-0">
+        Resumen general del sistema de envíos e importaciones por peso.
+      </p>
+    </div>
+
+    <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+      <a
+        href="{% url 'envios:paquete_crear' %}"
+        class="btn btn-fastbox"
+      >
+        Registrar paquete
+      </a>
+
+      <a
+        href="{% url 'envios:paquete_lista' %}"
+        class="btn btn-outline-dark"
+      >
+        Ver paquetes
+      </a>
+    </div>
+  </div>
+
+  <!-- Tarjetas de resumen -->
+  <div class="row g-3 mb-4">
+
+    <div class="col-md-6 col-xl-3">
+      <div class="card">
+        <div class="card-body">
+          <p class="text-muted mb-1">
+            Clientes
+          </p>
+
+          <h2 class="h3 mb-0">
+            {{ total_clientes }}
+          </h2>
+
+          <small class="text-muted">
+            Usuarios registrados
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-xl-3">
+      <div class="card">
+        <div class="card-body">
+          <p class="text-muted mb-1">
+            Paquetes
+          </p>
+
+          <h2 class="h3 mb-0">
+            {{ total_paquetes }}
+          </h2>
+
+          <small class="text-muted">
+            Guías FastBox creadas
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-xl-3">
+      <div class="card">
+        <div class="card-body">
+          <p class="text-muted mb-1">
+            Movimientos
+          </p>
+
+          <h2 class="h3 mb-0">
+            {{ total_movimientos }}
+          </h2>
+
+          <small class="text-muted">
+            Cambios de estado
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-xl-3">
+      <div class="card">
+        <div class="card-body">
+          <p class="text-muted mb-1">
+            Tarifas
+          </p>
+
+          <h2 class="h3 mb-0">
+            {{ total_tarifas }}
+          </h2>
+
+          <small class="text-muted">
+            Categorías configuradas
+          </small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Accesos rápidos -->
+  <div class="row g-3 mb-4">
+
+    <div class="col-md-6 col-xl-3">
+      <a
+        href="{% url 'clientes:cliente_lista' %}"
+        class="text-decoration-none"
+      >
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title text-dark">
+              Clientes
+            </h5>
+
+            <p class="text-muted mb-0">
+              Registrar clientes y revisar casilleros asignados.
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-6 col-xl-3">
+      <a
+        href="{% url 'tarifas:tarifa_lista' %}"
+        class="text-decoration-none"
+      >
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title text-dark">
+              Tarifas
+            </h5>
+
+            <p class="text-muted mb-0">
+              Administrar valores por libra según categoría.
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-6 col-xl-3">
+      <a
+        href="{% url 'envios:movimiento_lista' %}"
+        class="text-decoration-none"
+      >
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title text-dark">
+              Movimientos
+            </h5>
+
+            <p class="text-muted mb-0">
+              Registrar cambios de estado de los paquetes.
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-6 col-xl-3">
+      <a
+        href="{% url 'bitacora:bitacora_lista' %}"
+        class="text-decoration-none"
+      >
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title text-dark">
+              Bitácora
+            </h5>
+
+            <p class="text-muted mb-0">
+              Consultar las acciones realizadas en el sistema.
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="row g-4">
+
+    <!-- Últimos paquetes -->
+    <div class="col-lg-7">
+      <div class="card h-100">
+        <div class="card-body">
+
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h5 mb-0">
+              Últimos paquetes
+            </h2>
+
+            <a
+              href="{% url 'envios:paquete_lista' %}"
+              class="btn btn-sm btn-outline-dark"
+            >
+              Ver todos
+            </a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-sm align-middle mb-0">
+
+              <thead>
+                <tr>
+                  <th>Guía</th>
+                  <th>Cliente</th>
+                  <th>Estado</th>
+                  <th>Costo</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for paquete in ultimos_paquetes %}
+                  <tr>
+                    <td>
+                      <strong>{{ paquete.guia_fastbox }}</strong>
+                    </td>
+
+                    <td>
+                      {{ paquete.cliente }}
+                    </td>
+
+                    <td>
+                      <span class="badge text-bg-secondary">
+                        {{ paquete.get_estado_display }}
+                      </span>
+                    </td>
+
+                    <td>
+                      ${{ paquete.costo_estimado|floatformat:2 }}
+                    </td>
+                  </tr>
+                {% empty %}
+                  <tr>
+                    <td
+                      colspan="4"
+                      class="text-center text-muted py-3"
+                    >
+                      Todavía no hay paquetes registrados.
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Últimas acciones -->
+    <div class="col-lg-5">
+      <div class="card h-100">
+        <div class="card-body">
+
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h5 mb-0">
+              Actividad reciente
+            </h2>
+
+            <a
+              href="{% url 'bitacora:bitacora_lista' %}"
+              class="btn btn-sm btn-outline-dark"
+            >
+              Ver bitácora
+            </a>
+          </div>
+
+          {% for accion in ultimas_acciones %}
+            <div class="border-bottom pb-2 mb-2">
+              <div class="fw-semibold">
+                {{ accion.accion }}
+              </div>
+
+              <div class="small text-muted">
+                {{ accion.descripcion }}
+              </div>
+
+              <div class="small text-muted">
+                {{ accion.fecha_hora|date:"d/m/Y H:i" }}
+                · {{ accion.usuario }}
+              </div>
+            </div>
+          {% empty %}
+            <p class="text-muted mb-0">
+              Todavía no hay acciones registradas.
+            </p>
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

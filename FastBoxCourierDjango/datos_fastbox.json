@@ -1,0 +1,396 @@
+[
+{
+  "model": "clientes.cliente",
+  "pk": 1,
+  "fields": {
+    "nombres": "Sebastián",
+    "apellidos": "Escobar",
+    "correo": "sebastian@fastbox.com",
+    "telefono": "0967097653",
+    "direccion": "Guayaquil",
+    "casillero": "FBX-SEB001",
+    "estado": true,
+    "fecha_registro": "2026-08-02T01:08:06.267Z"
+  }
+},
+{
+  "model": "clientes.cliente",
+  "pk": 2,
+  "fields": {
+    "nombres": "Carlos",
+    "apellidos": "Xavier",
+    "correo": "calor@fastbox.com",
+    "telefono": "099874765",
+    "direccion": "Cuenca",
+    "casillero": "FBX-CAR002",
+    "estado": true,
+    "fecha_registro": "2026-08-02T15:20:14.411Z"
+  }
+},
+{
+  "model": "clientes.cliente",
+  "pk": 3,
+  "fields": {
+    "nombres": "Jose",
+    "apellidos": "Andre",
+    "correo": "andrw@gmail.com",
+    "telefono": "098234724",
+    "direccion": "Manabi",
+    "casillero": "FBX-JOSE003",
+    "estado": true,
+    "fecha_registro": "2026-08-02T15:47:01.668Z"
+  }
+},
+{
+  "model": "clientes.cliente",
+  "pk": 4,
+  "fields": {
+    "nombres": "Ale",
+    "apellidos": "Soledispa",
+    "correo": "Ale@fastbox.com",
+    "telefono": "014198484",
+    "direccion": "Samanes",
+    "casillero": "FBX-ALE003",
+    "estado": true,
+    "fecha_registro": "2026-08-02T16:08:49.862Z"
+  }
+},
+{
+  "model": "clientes.cliente",
+  "pk": 5,
+  "fields": {
+    "nombres": "Prueba",
+    "apellidos": "MySQL",
+    "correo": "prueba.mysql@fastbox.com",
+    "telefono": "098888777",
+    "direccion": "Guayaquil",
+    "casillero": "FBX-MYSQL001",
+    "estado": true,
+    "fecha_registro": "2026-08-02T16:14:15.144Z"
+  }
+},
+{
+  "model": "tarifas.tarifa",
+  "pk": 1,
+  "fields": {
+    "categoria": "TECNOLOGIA",
+    "valor_por_libra": "5.50",
+    "descripcion": "Tarifa para productos tecnologicos",
+    "estado": true
+  }
+},
+{
+  "model": "tarifas.tarifa",
+  "pk": 2,
+  "fields": {
+    "categoria": "ROPA",
+    "valor_por_libra": "8.50",
+    "descripcion": "Son unos diseños en textil nuevos, con costuras caras y buenos diseños de moda actual",
+    "estado": true
+  }
+},
+{
+  "model": "tarifas.tarifa",
+  "pk": 3,
+  "fields": {
+    "categoria": "ACCESORIOS",
+    "valor_por_libra": "8.80",
+    "descripcion": "Arctiulos de joyas de una tienda en EEUU",
+    "estado": true
+  }
+},
+{
+  "model": "tarifas.tarifa",
+  "pk": 4,
+  "fields": {
+    "categoria": "OTROS",
+    "valor_por_libra": "7.00",
+    "descripcion": "Oufit check",
+    "estado": true
+  }
+},
+{
+  "model": "envios.paquete",
+  "pk": 1,
+  "fields": {
+    "cliente": 1,
+    "tarifa": 1,
+    "guia_fastbox": "FBX-123456",
+    "tracking_original": "1Z999AA10123456784",
+    "tienda_origen": "Amazon",
+    "descripcion": "Audifonos inalámbricos",
+    "peso_libras": "2.00",
+    "costo_estimado": "11.00",
+    "estado": "TRANSITO",
+    "fecha_registro": "2026-08-02T01:09:38.250Z",
+    "fecha_actualizacion": "2026-08-02T15:09:43.153Z"
+  }
+},
+{
+  "model": "envios.paquete",
+  "pk": 2,
+  "fields": {
+    "cliente": 2,
+    "tarifa": 2,
+    "guia_fastbox": "FBX-123421",
+    "tracking_original": "1Z999BB10123654784",
+    "tienda_origen": "Shein",
+    "descripcion": "Son ropa de calzado especifico",
+    "peso_libras": "5.80",
+    "costo_estimado": "49.30",
+    "estado": "ECUADOR",
+    "fecha_registro": "2026-08-02T15:23:45.026Z",
+    "fecha_actualizacion": "2026-08-02T15:25:06.013Z"
+  }
+},
+{
+  "model": "envios.paquete",
+  "pk": 3,
+  "fields": {
+    "cliente": 3,
+    "tarifa": 3,
+    "guia_fastbox": "FBX-12555",
+    "tracking_original": "1Z999CC10123123784",
+    "tienda_origen": "DownTown",
+    "descripcion": "Joyas caras",
+    "peso_libras": "7.80",
+    "costo_estimado": "68.64",
+    "estado": "BODEGA",
+    "fecha_registro": "2026-08-02T15:48:09.764Z",
+    "fecha_actualizacion": "2026-08-02T15:48:29.115Z"
+  }
+},
+{
+  "model": "envios.paquete",
+  "pk": 4,
+  "fields": {
+    "cliente": 4,
+    "tarifa": 4,
+    "guia_fastbox": "FBX-55555",
+    "tracking_original": "1Z999DD112236546784",
+    "tienda_origen": "eBay",
+    "descripcion": "Ropa cara",
+    "peso_libras": "6.60",
+    "costo_estimado": "46.20",
+    "estado": "ENTREGADO",
+    "fecha_registro": "2026-08-02T16:09:49.554Z",
+    "fecha_actualizacion": "2026-08-02T16:10:32.040Z"
+  }
+},
+{
+  "model": "envios.movimientoenvio",
+  "pk": 1,
+  "fields": {
+    "paquete": 1,
+    "estado": "TRANSITO",
+    "detalle": "El paquete se encuentra en movimiento, aun falta tiempo para llegar, espere a las indicaciones, cualquier cosa nos avisa en que estado el producto se encuentra.",
+    "fecha_hora": "2026-08-02T15:09:43.148Z"
+  }
+},
+{
+  "model": "envios.movimientoenvio",
+  "pk": 2,
+  "fields": {
+    "paquete": 2,
+    "estado": "ECUADOR",
+    "detalle": "El paquete aun se encuentra en Ecuador, faltaria un poco para que se entrege, en cualquier momento se hace el envio del trabajo",
+    "fecha_hora": "2026-08-02T15:25:06.008Z"
+  }
+},
+{
+  "model": "envios.movimientoenvio",
+  "pk": 3,
+  "fields": {
+    "paquete": 3,
+    "estado": "BODEGA",
+    "detalle": "Se entrego un articulo caro en la bodega entrega de joyas disponible",
+    "fecha_hora": "2026-08-02T15:48:29.109Z"
+  }
+},
+{
+  "model": "envios.movimientoenvio",
+  "pk": 4,
+  "fields": {
+    "paquete": 4,
+    "estado": "ENTREGADO",
+    "detalle": "Paquete ya se encuentra entregado",
+    "fecha_hora": "2026-08-02T16:10:32.035Z"
+  }
+},
+{
+  "model": "bitacora.bitacora",
+  "pk": 1,
+  "fields": {
+    "fecha_hora": "2026-08-02T06:36:55.221Z",
+    "usuario": "admin",
+    "accion": "Paquete actualizado",
+    "descripcion": "Se actualizó la guía FBX-123456.",
+    "modulo": "Envíos"
+  }
+},
+{
+  "model": "bitacora.bitacora",
+  "pk": 2,
+  "fields": {
+    "fecha_hora": "2026-08-02T15:09:43.161Z",
+    "usuario": "admin",
+    "accion": "Movimiento registrado",
+    "descripcion": "La guía FBX-123456 cambió a En tránsito.",
+    "modulo": "Envíos"
+  }
+},
+{
+  "model": "bitacora.bitacora",
+  "pk": 3,
+  "fields": {
+    "fecha_hora": "2026-08-02T15:20:14.418Z",
+    "usuario": "admin",
+    "accion": "Cliente registrado",
+    "descripcion": "Se registró el cliente Carlos Xavier.",
+    "modulo": "Clientes"
+  }
+},
+{
+  "model": "bitacora.bitacora",
+  "pk": 4,
+  "fields": {
+    "fecha_hora": "2026-08-02T15:20:40.085Z",
+    "usuario": "admin",
+    "accion": "Cliente actualizado",
+    "descripcion": "Se actualizó la información del cliente Carlos Xavier.",
+    "modulo": "Clientes"
+  }
+},
+{
+  "model": "bitacora.bitacora",
+  "pk": 5,
+  "fields": {
+    "fecha_hora": "2026-08-02T15:21:35.675Z",
+    "usuario": "admin",
+    "accion": "Tarifa registrada",
+    "descripcion": "Se registró una tarifa para Ropa.",
+    "modulo": "Tarifas"
+  }
+},
+{
+  "model": "bitacora.bitacora",
+  "pk": 6,
+  "fields": {
+    "fecha_hora": "2026-08-02T15:23:45.032Z",
+    "usuario": "admin",
+    "accion": "Paquete registrado",
+    "descripcion": "Se registró la guía FBX-123421.",
+    "modulo": "Envíos"
+  }
+},
+{
+  "model": "bitacora.bitacora",
+  "pk": 7,
+  "fields": {
+    "fecha_hora": "2026-08-02T15:25:06.021Z",
+    "usuario": "admin",
+    "accion": "Movimiento registrado",
+    "descripcion": "La guía FBX-123421 cambió a Llegó a Ecuador.",
+    "modulo": "Envíos"
+  }
+},
+{
+  "model": "bitacora.bitacora",
+  "pk": 8,
+  "fields": {
+    "fecha_hora": "2026-08-02T15:47:01.676Z",
+    "usuario": "admin",
+    "accion": "Cliente registrado",
+    "descripcion": "Se registró el cliente Jose Andre.",
+    "modulo": "Clientes"
+  }
+},
+{
+  "model": "bitacora.bitacora",
+  "pk": 9,
+  "fields": {
+    "fecha_hora": "2026-08-02T15:47:26.378Z",
+    "usuario": "admin",
+    "accion": "Tarifa registrada",
+    "descripcion": "Se registró una tarifa para Accesorios.",
+    "modulo": "Tarifas"
+  }
+},
+{
+  "model": "bitacora.bitacora",
+  "pk": 10,
+  "fields": {
+    "fecha_hora": "2026-08-02T15:48:09.771Z",
+    "usuario": "admin",
+    "accion": "Paquete registrado",
+    "descripcion": "Se registró la guía FBX-12555.",
+    "modulo": "Envíos"
+  }
+},
+{
+  "model": "bitacora.bitacora",
+  "pk": 11,
+  "fields": {
+    "fecha_hora": "2026-08-02T15:48:29.120Z",
+    "usuario": "admin",
+    "accion": "Movimiento registrado",
+    "descripcion": "La guía FBX-12555 cambió a Recibido en bodega.",
+    "modulo": "Envíos"
+  }
+},
+{
+  "model": "bitacora.bitacora",
+  "pk": 12,
+  "fields": {
+    "fecha_hora": "2026-08-02T16:08:49.867Z",
+    "usuario": "admin",
+    "accion": "Cliente registrado",
+    "descripcion": "Se registró el cliente Ale Soledispa.",
+    "modulo": "Clientes"
+  }
+},
+{
+  "model": "bitacora.bitacora",
+  "pk": 13,
+  "fields": {
+    "fecha_hora": "2026-08-02T16:09:09.002Z",
+    "usuario": "admin",
+    "accion": "Tarifa registrada",
+    "descripcion": "Se registró una tarifa para Otros.",
+    "modulo": "Tarifas"
+  }
+},
+{
+  "model": "bitacora.bitacora",
+  "pk": 14,
+  "fields": {
+    "fecha_hora": "2026-08-02T16:09:49.561Z",
+    "usuario": "admin",
+    "accion": "Paquete registrado",
+    "descripcion": "Se registró la guía FBX-55555.",
+    "modulo": "Envíos"
+  }
+},
+{
+  "model": "bitacora.bitacora",
+  "pk": 15,
+  "fields": {
+    "fecha_hora": "2026-08-02T16:10:32.047Z",
+    "usuario": "admin",
+    "accion": "Movimiento registrado",
+    "descripcion": "La guía FBX-55555 cambió a Entregado.",
+    "modulo": "Envíos"
+  }
+},
+{
+  "model": "bitacora.bitacora",
+  "pk": 16,
+  "fields": {
+    "fecha_hora": "2026-08-02T16:14:15.149Z",
+    "usuario": "admin",
+    "accion": "Cliente registrado",
+    "descripcion": "Se registró el cliente Prueba MySQL.",
+    "modulo": "Clientes"
+  }
+}
+]

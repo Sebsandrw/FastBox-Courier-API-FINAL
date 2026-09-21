@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Movimientos | FastBox Courier
+{% endblock %}
+
+{% block content %}
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h1 class="h3 mb-1">
+        Movimientos de envío
+      </h1>
+
+      <p class="text-muted mb-0">
+        Historial de cambios realizados a los paquetes.
+      </p>
+    </div>
+
+    <a
+      href="{% url 'envios:movimiento_crear' %}"
+      class="btn btn-fastbox"
+    >
+      Registrar movimiento
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+
+          <thead class="table-dark">
+            <tr>
+              <th>ID</th>
+              <th>Guía</th>
+              <th>Estado</th>
+              <th>Detalle</th>
+              <th>Fecha y hora</th>
+              <th class="text-end">Acciones</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for movimiento in movimientos %}
+              <tr>
+                <td>{{ movimiento.id_movimiento }}</td>
+
+                <td>
+                  <strong>
+                    {{ movimiento.paquete.guia_fastbox }}
+                  </strong>
+                </td>
+
+                <td>
+                  <span class="badge text-bg-success">
+                    {{ movimiento.get_estado_display }}
+                  </span>
+                </td>
+
+                <td>{{ movimiento.detalle }}</td>
+
+                <td>
+                  {{ movimiento.fecha_hora|date:"d/m/Y H:i" }}
+                </td>
+
+                <td class="text-end acciones-tabla">
+                  <a
+                    href="{% url 'envios:movimiento_detalle' movimiento.pk %}"
+                    class="btn btn-sm btn-outline-info"
+                  >
+                    Detalle
+                  </a>
+
+                  <a
+                    href="{% url 'envios:movimiento_editar' movimiento.pk %}"
+                    class="btn btn-sm btn-outline-warning"
+                  >
+                    Editar
+                  </a>
+
+                  <a
+                    href="{% url 'envios:movimiento_eliminar' movimiento.pk %}"
+                    class="btn btn-sm btn-outline-danger"
+                  >
+                    Eliminar
+                  </a>
+                </td>
+              </tr>
+
+            {% empty %}
+              <tr>
+                <td
+                  colspan="6"
+                  class="text-center text-muted py-4"
+                >
+                  No existen movimientos registrados.
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

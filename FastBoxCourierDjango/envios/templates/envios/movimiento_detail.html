@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Detalle del movimiento | FastBox Courier
+{% endblock %}
+
+{% block content %}
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">
+      Detalle del movimiento
+    </h1>
+
+    <a
+      href="{% url 'envios:movimiento_lista' %}"
+      class="btn btn-secondary"
+    >
+      Volver
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="card-body p-4">
+
+      <dl class="row mb-0">
+
+        <dt class="col-sm-3">Guía</dt>
+        <dd class="col-sm-9">
+          {{ movimiento.paquete.guia_fastbox }}
+        </dd>
+
+        <dt class="col-sm-3">Paquete</dt>
+        <dd class="col-sm-9">
+          {{ movimiento.paquete.descripcion }}
+        </dd>
+
+        <dt class="col-sm-3">Estado</dt>
+        <dd class="col-sm-9">
+          {{ movimiento.get_estado_display }}
+        </dd>
+
+        <dt class="col-sm-3">Detalle</dt>
+        <dd class="col-sm-9">
+          {{ movimiento.detalle }}
+        </dd>
+
+        <dt class="col-sm-3">Fecha y hora</dt>
+        <dd class="col-sm-9">
+          {{ movimiento.fecha_hora|date:"d/m/Y H:i" }}
+        </dd>
+
+      </dl>
+
+      <div class="mt-4 d-flex gap-2">
+        <a
+          href="{% url 'envios:movimiento_editar' movimiento.pk %}"
+          class="btn btn-warning"
+        >
+          Editar
+        </a>
+
+        <a
+          href="{% url 'envios:movimiento_eliminar' movimiento.pk %}"
+          class="btn btn-danger"
+        >
+          Eliminar
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Bitácora | FastBox Courier
+{% endblock %}
+
+{% block content %}
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h1 class="h3 mb-1">
+        Bitácora del sistema
+      </h1>
+
+      <p class="text-muted mb-0">
+        Registro de acciones realizadas dentro de FastBox Courier.
+      </p>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    La bitácora es solo de consulta. No tiene botón para borrar registros.
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+
+          <thead class="table-dark">
+            <tr>
+              <th>Fecha y hora</th>
+              <th>Usuario</th>
+              <th>Acción</th>
+              <th>Módulo</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for registro in registros %}
+              <tr>
+                <td>
+                  {{ registro.fecha_hora|date:"d/m/Y H:i" }}
+                </td>
+
+                <td>
+                  {{ registro.usuario }}
+                </td>
+
+                <td>
+                  <strong>{{ registro.accion }}</strong>
+                </td>
+
+                <td>
+                  <span class="badge text-bg-secondary">
+                    {{ registro.modulo }}
+                  </span>
+                </td>
+
+                <td>
+                  {{ registro.descripcion }}
+                </td>
+              </tr>
+
+            {% empty %}
+              <tr>
+                <td
+                  colspan="5"
+                  class="text-center text-muted py-4"
+                >
+                  Todavía no existen acciones registradas.
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

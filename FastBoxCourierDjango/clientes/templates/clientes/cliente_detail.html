@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Detalle de cliente | FastBox Courier
+{% endblock %}
+
+{% block content %}
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">
+      Detalle del cliente
+    </h1>
+
+    <a
+      href="{% url 'clientes:cliente_lista' %}"
+      class="btn btn-secondary"
+    >
+      Volver
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="card-body p-4">
+
+      <dl class="row mb-0">
+
+        <dt class="col-sm-3">Identificador</dt>
+        <dd class="col-sm-9">{{ cliente.id_cliente }}</dd>
+
+        <dt class="col-sm-3">Nombres</dt>
+        <dd class="col-sm-9">{{ cliente.nombres }}</dd>
+
+        <dt class="col-sm-3">Apellidos</dt>
+        <dd class="col-sm-9">{{ cliente.apellidos }}</dd>
+
+        <dt class="col-sm-3">Correo</dt>
+        <dd class="col-sm-9">{{ cliente.correo }}</dd>
+
+        <dt class="col-sm-3">Teléfono</dt>
+        <dd class="col-sm-9">
+          {{ cliente.telefono|default:"No registrado" }}
+        </dd>
+
+        <dt class="col-sm-3">Dirección</dt>
+        <dd class="col-sm-9">
+          {{ cliente.direccion|default:"No registrada" }}
+        </dd>
+
+        <dt class="col-sm-3">Casillero</dt>
+        <dd class="col-sm-9">
+          <strong>{{ cliente.casillero }}</strong>
+        </dd>
+
+        <dt class="col-sm-3">Estado</dt>
+        <dd class="col-sm-9">
+          {% if cliente.estado %}
+            <span class="badge text-bg-success">
+              Activo
+            </span>
+          {% else %}
+            <span class="badge text-bg-secondary">
+              Inactivo
+            </span>
+          {% endif %}
+        </dd>
+
+        <dt class="col-sm-3">Paquetes</dt>
+        <dd class="col-sm-9">
+          {{ cliente.paquetes.count }}
+        </dd>
+
+      </dl>
+
+      <div class="mt-4 d-flex gap-2">
+        <a
+          href="{% url 'clientes:cliente_editar' cliente.pk %}"
+          class="btn btn-warning"
+        >
+          Editar
+        </a>
+
+        <a
+          href="{% url 'clientes:cliente_eliminar' cliente.pk %}"
+          class="btn btn-danger"
+        >
+          Eliminar
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

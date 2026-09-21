@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Eliminar tarifa | FastBox Courier
+{% endblock %}
+
+{% block content %}
+
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+
+      <div class="card border-danger">
+        <div class="card-body p-4">
+
+          <h1 class="h3 text-danger">
+            Eliminar tarifa
+          </h1>
+
+          <p>
+            Está a punto de eliminar la tarifa:
+          </p>
+
+          <p class="fw-bold fs-5">
+            {{ tarifa.get_categoria_display }}
+            - ${{ tarifa.valor_por_libra|floatformat:2 }}
+          </p>
+
+          <div class="alert alert-warning">
+            Si la tarifa está relacionada con paquetes,
+            no podrá eliminarse.
+          </div>
+
+          <form method="post">
+            {% csrf_token %}
+
+            <button
+              type="submit"
+              class="btn btn-danger"
+            >
+              Confirmar eliminación
+            </button>
+
+            <a
+              href="{% url 'tarifas:tarifa_lista' %}"
+              class="btn btn-secondary"
+            >
+              Cancelar
+            </a>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

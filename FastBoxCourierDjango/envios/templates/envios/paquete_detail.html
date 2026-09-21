@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Detalle del paquete | FastBox Courier
+{% endblock %}
+
+{% block content %}
+
+  <div
+    class="d-flex justify-content-between align-items-center mb-4"
+  >
+    <h1 class="h3 mb-0">
+      Detalle del paquete
+    </h1>
+
+    <a
+      href="{% url 'envios:paquete_lista' %}"
+      class="btn btn-secondary"
+    >
+      Volver
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="card-body p-4">
+
+      <dl class="row mb-0">
+
+        <dt class="col-sm-3">Guía FastBox</dt>
+        <dd class="col-sm-9">{{ paquete.guia_fastbox }}</dd>
+
+        <dt class="col-sm-3">Tracking original</dt>
+        <dd class="col-sm-9">
+          {{ paquete.tracking_original|default:"No registrado" }}
+        </dd>
+
+        <dt class="col-sm-3">Cliente</dt>
+        <dd class="col-sm-9">{{ paquete.cliente }}</dd>
+
+        <dt class="col-sm-3">Tienda de origen</dt>
+        <dd class="col-sm-9">{{ paquete.tienda_origen }}</dd>
+
+        <dt class="col-sm-3">Descripción</dt>
+        <dd class="col-sm-9">{{ paquete.descripcion }}</dd>
+
+        <dt class="col-sm-3">Peso</dt>
+        <dd class="col-sm-9">{{ paquete.peso_libras }} lb</dd>
+
+        <dt class="col-sm-3">Tarifa</dt>
+        <dd class="col-sm-9">{{ paquete.tarifa }}</dd>
+
+        <dt class="col-sm-3">Costo estimado</dt>
+        <dd class="col-sm-9">
+          ${{ paquete.costo_estimado|floatformat:2 }}
+        </dd>
+
+        <dt class="col-sm-3">Estado</dt>
+        <dd class="col-sm-9">
+          {{ paquete.get_estado_display }}
+        </dd>
+
+      </dl>
+
+      <div class="mt-4 d-flex gap-2">
+        <a
+          href="{% url 'envios:paquete_editar' paquete.pk %}"
+          class="btn btn-warning"
+        >
+          Editar
+        </a>
+
+        <a
+          href="{% url 'envios:paquete_eliminar' paquete.pk %}"
+          class="btn btn-danger"
+        >
+          Eliminar
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

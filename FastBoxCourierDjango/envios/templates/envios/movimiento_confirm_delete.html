@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Eliminar movimiento | FastBox Courier
+{% endblock %}
+
+{% block content %}
+
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+
+      <div class="card border-danger">
+        <div class="card-body p-4">
+
+          <h1 class="h3 text-danger">
+            Eliminar movimiento
+          </h1>
+
+          <p>
+            Está a punto de eliminar este movimiento de la guía:
+          </p>
+
+          <p class="fw-bold fs-5">
+            {{ movimiento.paquete.guia_fastbox }}
+          </p>
+
+          <div class="alert alert-warning">
+            Esta acción solo elimina el movimiento registrado,
+            no elimina el paquete.
+          </div>
+
+          <form method="post">
+            {% csrf_token %}
+
+            <button
+              type="submit"
+              class="btn btn-danger"
+            >
+              Confirmar eliminación
+            </button>
+
+            <a
+              href="{% url 'envios:movimiento_lista' %}"
+              class="btn btn-secondary"
+            >
+              Cancelar
+            </a>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

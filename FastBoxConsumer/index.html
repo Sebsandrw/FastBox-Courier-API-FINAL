@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Consulta FastBox Courier</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <header class="encabezado">
+    <div class="contenedor">
+      <h1>FastBox Courier</h1>
+      <p>
+        Consulta pública de paquetes registrados desde la API REST.
+      </p>
+    </div>
+  </header>
+
+  <main class="contenedor">
+
+    <section class="panel">
+      <div>
+        <h2>Paquetes disponibles</h2>
+        <p class="texto-secundario">
+          Los datos se obtienen desde el servidor Django publicado en AlwaysData.
+        </p>
+      </div>
+
+      <div class="acciones">
+        <input
+          type="text"
+          id="buscador"
+          placeholder="Buscar por guía, tienda o descripción"
+        >
+
+        <select id="filtroEstado">
+          <option value="">Todos los estados</option>
+          <option value="PREALERTA">Prealerta registrada</option>
+          <option value="BODEGA">Recibido en bodega</option>
+          <option value="TRANSITO">En tránsito</option>
+          <option value="ECUADOR">Llegó a Ecuador</option>
+          <option value="ENTREGA">Listo para entrega</option>
+          <option value="ENTREGADO">Entregado</option>
+        </select>
+
+        <button id="btnRecargar">
+          Recargar
+        </button>
+      </div>
+    </section>
+
+    <section id="estadoCarga" class="mensaje">
+      Cargando información...
+    </section>
+
+    <section id="listaPaquetes" class="grid-paquetes">
+    </section>
+
+    <section id="detallePaquete" class="detalle oculto">
+      <div class="detalle-cabecera">
+        <h2>Detalle del paquete</h2>
+
+        <button id="btnCerrarDetalle">
+          Cerrar
+        </button>
+      </div>
+
+      <div id="contenidoDetalle"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      Cliente externo publicado en InfinityFree consumiendo API REST de Django.
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
