@@ -6,10 +6,13 @@ El proyecto está dividido en una parte principal del sistema y una página dest
 
 ## Páginas del proyecto
 # Creedenciales:
+
 operador
+
 Fastbox2026@
 
 Admin
+
 Fastbox2026@
 
 ### FastBox Courier
